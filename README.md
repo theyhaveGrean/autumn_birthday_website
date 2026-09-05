@@ -2,7 +2,9 @@
 
 ## GitHub Pages
 
-This project works as a static GitHub Pages site. Set GitHub Pages to deploy from the `main` branch, then open `/home.html` as the PIN landing page. On GitHub Pages, notes are stored in the visitor's browser with `localStorage` because GitHub Pages cannot run a server or accept database writes. That means notes are not shared between visitors.
+This project works as a static GitHub Pages site. Set GitHub Pages to deploy from the `main` branch, then open the root page. The frontend uses Supabase's public REST API. Run `supabase.sql` once in the Supabase SQL Editor.
+
+The root page uses a retro green terminal theme and does not request prior messages until PIN `4008` is entered. This is a privacy gate, not strong authentication: GitHub Pages exposes the PIN and publishable API key to anyone inspecting the site. For real security, move PIN validation and database reads behind a server-side authenticated endpoint and remove anonymous `select` access from Supabase RLS.
 
 For a truly shared public database, deploy `server.py` to a Raspberry Pi or another hosting service and point the frontend API requests at that server.
 
